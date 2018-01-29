@@ -7,6 +7,7 @@ Technologies planned to use ?
 2. React and Redux on front-end
 3. Google's OAuth with Passport.js for authentication
 4. Stripe library for amazing payment method 
-5. MongoDB for database
+5. MongoDB for database with Mongoose.js
 
-Thanks for having a look :)
+Thanks for having a look :) 
+If you would like to make any suggestions regarding adding more functionalities or libraries, please feel free to send me an email. :D
