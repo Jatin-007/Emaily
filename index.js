@@ -1,5 +1,10 @@
 const express = require ('express'); // node js does not have es2015 module support... thatsy we didnt usedthe expression 'import'
+const mongoose = require ('mongoose');
+const keys = require ('./config/keys');
 require ('./services/passport'); // since we are not returning anything from Passport.js file..
+
+mongoose.connect(keys.mongoURI);
+
 
 const app = express();
 
