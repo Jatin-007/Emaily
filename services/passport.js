@@ -1,6 +1,9 @@
 const passport = require ('passport');
 const GoogleStrategy = require ('passport-google-oauth20').Strategy;
+const mongoose = require('mongoose');
 const keys = require ('../config/keys');
+
+const User = mongoose.model('users');
 
 passport.use
     (new GoogleStrategy(
@@ -11,10 +14,18 @@ passport.use
         },
 
         (accessToken, refreshToken, profile, done)=> {
-            console.log('accessToken', accessToken);
-            console.log('refreshToken', refreshToken);
-            console.log('Profile', profile);
+            User.findOne({ googleId: profile.id })
+                .then((existingUser)=> {
+                    if (existingUser) {
+                        //we already have a record with given profile id
+                    }
+                    else {
+                        new User({ googleId: profile.id }).save();
+                    }
+                }
+            )
+
         }
     )
 ); // providing passport with an instinct of using Google Strategy up next!
-
+// promise is a tool to handle async javascript code
