@@ -5,6 +5,19 @@ const keys = require ('../config/keys');
 
 const User = mongoose.model('users');
 
+passport.serializeUser((user, done)=> {
+    done(null, user.id);
+    // user.id refers to the `_id` inside database with user
+    // reason for using user.id instead of googleId is that there might be chances, user will login with Facebook or other platforms and not google everytime
+});
+
+passport.deserializeUser((id, done)=> {
+    User.findById(id).then (user => {
+        done(null, user);
+    });
+});
+
+
 passport.use
     (new GoogleStrategy(
         {
@@ -18,9 +31,12 @@ passport.use
                 .then((existingUser)=> {
                     if (existingUser) {
                         //we already have a record with given profile id
+                        done(null, existingUser);
                     }
                     else {
-                        new User({ googleId: profile.id }).save();
+                        new User({ googleId: profile.id })
+                            .save()
+                            .then(user => done(null, user));
                     }
                 }
             )
@@ -28,4 +44,4 @@ passport.use
         }
     )
 ); // providing passport with an instinct of using Google Strategy up next!
-// promise is a tool to handle async javascript code
+// promise is a tool to handle async callbacks

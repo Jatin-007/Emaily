@@ -1,4 +1,4 @@
-const passport = require ('passport'); // we are import passport npm module instead of passport.js
+const passport = require ('passport');
 
 module.exports = app=> {
     app.get(
