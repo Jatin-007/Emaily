@@ -8,4 +8,13 @@ module.exports = app=> {
         }));
     
     app.get('/auth/google/callback', passport.authenticate('google')); // google inside passport.authenticate is provided inside passport's google strategy
-}
+
+    app.get('/api/logout', (req, res)=> {
+        req.logout();
+        res.send(req.user);
+    }); 
+
+    app.get('/api/current_user', (req,res) => {
+        res.send(req.user);
+    });
+};
