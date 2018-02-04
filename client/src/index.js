@@ -9,4 +9,4 @@ const store = createStore(()=> [], {}, applyMiddleware());
 
 ReactDOM.render(
     <Provider store={store}><App /></Provider>,
-    document.querySelector('#root'));
+    document.querySelector('#root')); 
