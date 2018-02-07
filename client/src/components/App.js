@@ -6,6 +6,7 @@ import * as actions from '../actions'; // fetching all the actions inside the ac
 
 import Header from './Header';
 import Landing from './Landing';
+import Footer from './Footer';
 
 const Dashboard = () => <h2>Dashboard</h2>;
 const SurveyNew = () => <h2>SurveyNew</h2>;
@@ -25,6 +26,7 @@ class App extends Component {
                         <Route exact path="/" component ={Landing}/>
                         <Route exact path = "/surveys" component = {Dashboard}/>
                         <Route path = "/surveys/new" component = {SurveyNew}/>
+                        <Footer/>
                     </div>
                 </BrowserRouter>
             </div>
