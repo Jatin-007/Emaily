@@ -8,3 +8,9 @@ export const fetchUser = () => async (dispatch) => {
 };
 
 // fetchUser is a function which calls another function with dispatch as the variable inside.
+
+export const handleToken = (token) => async (dispatch ) => {
+    const res = await axios.post('/api/stripe', token);
+
+    dispatch({ type: FETCH_USER, payload: res.data});
+};
