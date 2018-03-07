@@ -2,6 +2,7 @@ const express = require ('express'); // node js does not have es2015 module supp
 const mongoose = require ('mongoose');
 const cookieSession = require ('cookie-session');
 const passport = require ('passport');
+const bodyParser = require ('body-parser');
 const keys = require ('./config/keys');
 require('./models/User');
 require ('./services/passport'); // since we are not returning anything from Passport.js file..
@@ -9,6 +10,8 @@ require ('./services/passport'); // since we are not returning anything from Pas
 mongoose.connect(keys.mongoURI);
 
 const app = express();
+
+app.use(bodyParser.json()); // middleware being used with Express framework
 
 app.use(
     cookieSession({
