@@ -11,7 +11,7 @@ mongoose.connect(keys.mongoURI);
 
 const app = express();
 
-app.use(bodyParser.json()); // middleware being used with Express framework
+app.use(bodyParser.json()); // This helps to handle post requests since Express does not handles post req properly // middleware being used with Express framework
 
 app.use(
     cookieSession({
