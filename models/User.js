@@ -2,7 +2,8 @@ const mongoose = require ('mongoose');
 const { Schema } = mongoose;  // provide all the properties that will be in the records to be recorded
 
 const userSchema = new Schema ({
-    googleId: String
+    googleId: String,
+    credits: { type: Number, default: 5 }
 });
 
 mongoose.model('users', userSchema);
