@@ -26,6 +26,7 @@ app.use(passport.session());
 
 require ('./routes/authRoutes')(app); // as the authRoutes exports a function
 require('./routes/billingRoutes')(app);
+require('./routes/surveyRoutes')(app);
 
 // this particular code is confiming with node if the app is running a production environment or development
 // if production, and its looking to browse to a certain file, try searching up in the client/build directory
