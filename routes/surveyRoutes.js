@@ -15,7 +15,7 @@ module.exports = app => {
         title,
         subject,
         body,
-        recipients: recipients.split(',').map(email => ({ email })),
+        recipients: recipients.split(',').map(email => ({ email: email.trim() })),
         // getting the recipients in a well managed way.
         // split method is splitting the emails wherever , is located and storing emails in a seperate object
         _user: req.user.id,
