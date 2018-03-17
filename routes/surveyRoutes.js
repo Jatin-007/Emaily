@@ -26,7 +26,7 @@ module.exports = app => {
         });
 
         // Great place to send an email...
-        const mailer = new Mailer(survey, surveyTemplate);
+        const mailer = new Mailer(survey, surveyTemplate(survey));
         mailer.send();
     });
 };

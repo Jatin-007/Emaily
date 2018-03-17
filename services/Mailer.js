@@ -11,7 +11,7 @@ class Mailer extends helper.Mail {
         this.sgApi = sendgrid(keys.sendGridKey); // fetching api key
 
         // helper function is provided by sendgrid 
-        this.from_email = new helper.Email('np-reply@emaily.com');
+        this.from_email = new helper.Email('no-reply@emaily.com');
         this.subject = subject;
         this.body = new helper.Content('text/html', content);
         this.recipients = this.formatAddresses(recipients);
@@ -49,10 +49,10 @@ class Mailer extends helper.Mail {
         const request = this.sgApi.emptyRequest ({
             method: 'POST',
             path: '/v3/mail/send',
-            body: this.toJSON();
+            body: this.toJSON()
         });
 
-        const response = this.sgApi.API(request); //API is a function provided by sendgrid
+        const response = this.sgApi.API(request);
         return response;
     }
 }

@@ -8,6 +8,9 @@ import reduxThunk from 'redux-thunk'; // What does Redux-thunk do ?
 import App from './components/App';
 import reducers from './reducers';
 
+import axios from 'axios';
+window.axios = axios;
+
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 ReactDOM.render(
@@ -15,5 +18,3 @@ ReactDOM.render(
     document.querySelector('#root')); 
 
 // Just printing out some console log statement for testing atm
-console.log('STRIPE KEY is', process.env.REACT_APP_STRIPE_KEY)
-console.log('Environment', process.env.NODE_ENV)
