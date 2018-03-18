@@ -8,7 +8,12 @@ const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
 const Survey = mongoose.model('surveys');
 
 module.exports = app => {
-    app.post('/api/surveys', requireLogin, requireCredits, (req, res) => {
+    
+    app.get('/api/surveys/thanks', (req, res) => {
+        res.send('Thanks for your amazing feedback');
+    });
+    
+    app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
         // checking up if the user is logged in or no in the app by using the requireLogin
     // requesting title, subject, body and recipients
         const { title, subject, body, recipients } = req.body;
@@ -27,6 +32,20 @@ module.exports = app => {
 
         // Great place to send an email...
         const mailer = new Mailer(survey, surveyTemplate(survey));
-        mailer.send(); // to send the survey
+        
+        try{
+        await mailer.send(); // to send the survey
+    
+        // saving the survey
+        await survey.save();
+        req.user.credits -= 1;
+        const user = await req.user.save();
+
+        res.send(user);
+        }
+        // 422 is for providing user a hint that something inside the form went wrong
+        catch(err){
+            res.status(422).send(err);
+        }
     });
 };
