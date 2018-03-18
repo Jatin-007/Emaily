@@ -7,7 +7,7 @@ import reduxThunk from 'redux-thunk'; // What does Redux-thunk do ?
 
 import App from './components/App';
 import reducers from './reducers';
-
+// development only axios helper
 import axios from 'axios';
 window.axios = axios;
 
