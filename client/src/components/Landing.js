@@ -7,11 +7,14 @@ const Landing = ()=> {
             <h1>
                 Emaily!!!
             </h1>
-            <div className= "z-depth-1">
+            <div className= "z-depth-1" style={{backgroundColor: '#168e76', color: 'white', padding: 12}}>
                 <p>
-                Collect Feedback from your friends
-                <ReactTyped/>
+                    <ReactTyped/>
                 </p>
+            </div>
+
+            <div>
+
             </div>
         </div>
     );
