@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactTyped from './ReactTyped';
 
 const Landing = ()=> {
     return (
@@ -6,10 +7,12 @@ const Landing = ()=> {
             <h1>
                 Emaily!!!
             </h1>
-
-            <p>
-            Collect Feedback from your friends
-            </p>
+            <div className= "z-depth-1">
+                <p>
+                Collect Feedback from your friends
+                <ReactTyped/>
+                </p>
+            </div>
         </div>
     );
 };
