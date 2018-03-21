@@ -7,8 +7,7 @@ import * as actions from '../actions'; // fetching all the actions inside the ac
 import Header from './Header';
 import Landing from './Landing';
 import Dashboard from './Dashboard';
-
-const SurveyNew = () => <h2>SurveyNew</h2>;
+import SurveyNew from './SurveyNew';
 
 class App extends Component {
     componentDidMount() {
