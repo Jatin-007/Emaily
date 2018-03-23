@@ -33,6 +33,19 @@ class SurveyForm extends Component {
     }
 }
 
+// validating the inputs using this function
+function validate(values) {
+    const errors = {};
+
+    if(!values.title){
+        // if there is no title return this error into errors object
+        errors.title = 'You must provide a title';
+    }
+    
+    return errors;
+}
+
 export default reduxForm({
+    validate,
     form: 'surveyForm'
 })(SurveyForm); // similar to connect helper
