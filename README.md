@@ -7,6 +7,7 @@ Emaily is an application for small businesses where they can register their acco
  3. Google's OAuth with Passport.js for authentication
  4. Stripe library for amazing payment method 
  5. MongoDB for database with Mongoose.js
+ 6. SendGrid for Sending out the emails
 
 Thanks for having a look :) 
 
