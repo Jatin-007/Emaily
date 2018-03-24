@@ -1,13 +1,12 @@
 // surveyfields contains logic to render single label and text input
 import React from 'react';
 
-const SurveyField = ({ input, label, meta }) => {
-    console.log(meta);
+const SurveyField = ({ input, label, meta:{error, touched} }) => {
     return (
         <div>
             <label>{label}</label>
             <input {...input}  />
-            {meta.error}
+            {touched && error}
         </div>
     );
 };
