@@ -5,7 +5,7 @@ const Dashboard = () => {
     return (
         <div>
             Dashboard
-            <div className="fixed-action-btn" style={{marginRight: '180px'}}>
+            <div className="fixed-action-btn" style={{marginRight: '14%'}}>
                 <Link to="/surveys/new" className="btn-floating btn-large red">
                     <i className="large material-icons">add</i>
                 </Link>
