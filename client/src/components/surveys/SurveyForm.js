@@ -41,7 +41,14 @@ function validate(values) {
         // if there is no title return this error into errors object
         errors.title = 'You must provide a title';
     }
-    
+    if(!values.subject){
+        // if there is no title return this error into errors object
+        errors.title = 'Please enter a Subject';
+    }
+    if(!values.body){
+        // if there is no title return this error into errors object
+        errors.title = 'Please provide any message inside the email';
+    }
     return errors;
 }
 
