@@ -14,3 +14,7 @@ export const handleToken = (token) => async (dispatch ) => {
         // post request is made to send information to backend
     dispatch({ type: FETCH_USER, payload: res.data});
 };
+
+export const submitSurvey = values => {
+    return {type: 'submit_survey'};
+};
