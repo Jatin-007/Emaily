@@ -2,8 +2,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../../actions';
+import { withRouter } from 'react-router-dom';
 
-const SurveyFormReview = ({ onCancel, formValues, submitSurvey }) => {
+const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
     return (
         <div>
             <h6>Please confirm your entries</h6>
@@ -26,7 +27,8 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey }) => {
                 </div>
             </div>
             <button className="yellow darken-3 btn-flat white-text" onClick={onCancel}>Back</button>
-            <button className="green btn-flat right white-text" type="submit" onClick= {()=> submitSurvey(formValues)}>Send Survey<i className="material-icons right">email</i></button>
+
+            <button type="submit" onClick= {()=> submitSurvey(formValues, history)} className="green btn-flat right white-text">Send Survey<i className="material-icons right">email</i></button>
         </div>
     );
 };
@@ -37,6 +39,6 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, actions)(SurveyFormReview);
+export default connect(mapStateToProps, actions)(withRouter(SurveyFormReview));
 // since we are connecting funtion mapStateToProps with SurveyFormReview
 // surveyFormReview is able to fetch all the data passed out...
