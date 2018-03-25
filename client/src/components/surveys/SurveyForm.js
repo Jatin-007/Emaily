@@ -11,7 +11,7 @@ const FIELDS = [
     {label: 'Survey Title', name:'title'},
     {label: 'Subject Line', name: 'subject'},
     {label: 'Email Body', name:'body'},
-    {label: 'Recipient List', name:'emails'},
+    {label: 'Recipient List', name:'recipients'},
 ];
 
 class SurveyForm extends Component {
@@ -43,7 +43,7 @@ class SurveyForm extends Component {
 function validate(values) {
     const errors = {};
 
-    errors.emails = validateEmails(values.emails || ''); // using validateEmails file to validate emails
+    errors.recipients = validateEmails(values.recipients || ''); // using validateEmails file to validate emails
     
     if(!values.title){
         // if there is no title return this error into errors object
@@ -57,9 +57,9 @@ function validate(values) {
         // if there is no title return this error into errors object
         errors.body = 'Please provide any message inside the email**';
     }
-    if(!values.emails){
+    if(!values.recipients){
         // if there is no title return this error into errors object
-        errors.emails = 'Please provide atleast 1 email address**';
+        errors.recipients = 'Please provide atleast 1 email address**';
     }
     
     

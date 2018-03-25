@@ -22,7 +22,7 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey }) => {
                 </div>
                 <div>
                     <label>Recipients list</label>
-                    <div>{formValues.emails}</div>
+                    <div>{formValues.recipients}</div>
                 </div>
             </div>
             <button className="yellow darken-3 btn-flat white-text" onClick={onCancel}>Back</button>
