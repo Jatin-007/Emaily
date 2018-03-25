@@ -1,5 +1,6 @@
 // SurveyNew is a parent of SurveyForm and SurveyReview
 import SurveyForm from './SurveyForm';
+import {reduxForm} from 'redux-form';
 import React, { Component } from 'react';
 import SurveyFormReview from './SurveyFormReview';
 
@@ -27,4 +28,6 @@ class SurveyNew extends Component {
     }
 }
 
-export default SurveyNew;
+export default reduxForm({
+    form: 'surveyForm'
+})(SurveyNew);
