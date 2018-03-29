@@ -13,6 +13,11 @@ module.exports = app => {
         res.send('Thanks for your amazing feedback');
     });
     
+    app.post('/api/surveys/webhooks',(req, res) => {
+        console.log(req.body);
+        res.send({});
+    });
+
     app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
         // checking up if the user is logged in or no in the app by using the requireLogin
     // requesting title, subject, body and recipients
