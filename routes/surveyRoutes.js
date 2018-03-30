@@ -20,14 +20,16 @@ module.exports = app => {
     app.post('/api/surveys/webhooks',(req, res) => {
         const p = new Path('/api/surveys/:surveyId/:choice');
         
-        const events = _.map(req.body, ({email, url})=> {
+        const events = _.chain(req.body)
+        .map(({email, url})=> {
             const match = p.test(new URL(url).pathname);
             if(match){
                 return { email, surveyId: match.surveyId, choice: match.surveyId};
             }
-        });
-        const compactEvents = _.compact(events); // will show all the events and wont display the undefined objects
-        const uniqueEvents = _ .uniqBy(compactEvents, 'email', 'surveyId'); // will filter out any duplicate email and surveyId
+        })
+        .compact()// will show all the events and wont display the undefined objects
+        .uniqBy('email', 'surveyId')// will filter out any duplicate email and surveyId
+        .value();
         console.log(uniqueEvents);
     
         res.send({});
