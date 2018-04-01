@@ -11,4 +11,7 @@ Emaily is an application for small businesses where they can register their acco
 
 Thanks for having a look :) 
 
-If you would like to make any suggestions regarding adding more functionalities or libraries, please feel free to send me an email. :D
+## Will be adding a URL Link soon for the production side of this website
+Currently i have been focusing more on working at the development side and understanding the difference and how to handle certain situations
+
+Planning to deploy the production side on Heroku or Firebase
