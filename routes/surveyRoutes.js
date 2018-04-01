@@ -23,7 +23,7 @@ module.exports = app => {
         .map(({email, url})=> {
             const match = p.test(new URL(url).pathname);
             if(match){
-                return { email, surveyId: match.surveyId, choice: match.surveyId};
+                return { email, surveyId: match.surveyId, choice: match.choice};
             }
         })
         .compact()// will show all the events and wont display the undefined objects
