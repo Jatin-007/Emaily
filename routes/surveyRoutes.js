@@ -1,8 +1,7 @@
-const mongoose = require ('mongoose');
-
 const _ = require('lodash'); // lodash
 const Path = require ('path-parser'); // to filter out the path
 const { URL } = require ('url'); // is default installed inside node library
+const mongoose = require ('mongoose');
 
 const requireLogin = require ('../middlewares/requireLogin');
 const requireCredits = require('../middlewares/requireCredits');
