@@ -18,14 +18,22 @@ module.exports = app => {
     });
     
     app.post('/api/surveys/webhooks',(req, res) => {
-        // mapping over req.bodu to fetch out every event
-        const events = _.map(req.body, (event)=> {
-            // assignign a pathname to fetch out just the URL provided in event
-            const pathname = new URL(event.url).pathname;
-            // const p = Path.createPath('/api/surveys/:surveyId/:choice');
+        // mapping over req.body to fetch out every event
+        const events = _.map(req.body, ({email, url})=> {
+            // assigning a pathname to fetch out just the URL provided in event
+            const pathname = new URL(url).pathname;
+            
+            //FROM DIFFERENT LIBRARY // path-parser // const p = Path.createPath('/api/surveys/:surveyId/:choice');
             const p = new UrlPath('/api/surveys/:surveyId/:choice');
-            console.log(p.match(pathname));
+            // console.log(p.match(pathname));
+
+            const test = p.match(pathname);
+            if(test){
+                return {email, surveyId: test.surveyId, choice: test.choice};
+            }
         });
+
+        console.log(events);
     });
 
     app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
