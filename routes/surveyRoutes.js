@@ -23,7 +23,7 @@ module.exports = app => {
             // assignign a pathname to fetch out just the URL provided in event
             const pathname = new URL(event.url).pathname;
             // const p = Path.createPath('/api/surveys/:surveyId/:choice');
-            const p = new UrlPattern('/api/surveys/:surveyId/:choice');
+            const p = new UrlPath('/api/surveys/:surveyId/:choice');
             console.log(p.match(pathname));
         });
     });
