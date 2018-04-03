@@ -25,7 +25,6 @@ module.exports = app => {
             
             //FROM DIFFERENT LIBRARY // path-parser // const p = Path.createPath('/api/surveys/:surveyId/:choice');
             const p = new UrlPath('/api/surveys/:surveyId/:choice');
-            // console.log(p.match(pathname));
 
             const test = p.match(pathname);
             if(test){
@@ -33,7 +32,12 @@ module.exports = app => {
             }
         });
 
-        console.log(events);
+        const compactEvents = _.compact(events); // removing undefined values from the events using lodash's compact method
+        const uniqueEvents = _.uniqBy(compactEvents, 'email', 'surveyId'); // uniqBy another method to find unique values/results
+        // uniqBy // go through the compactEvents and remove all the duplicates with same 'email' as well as 'surveyId'
+        
+        console.log(uniqueEvents);
+        res.send({});
     });
 
     app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
