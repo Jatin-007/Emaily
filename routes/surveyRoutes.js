@@ -1,6 +1,7 @@
 const _ = require('lodash'); // lodash
-const Path = require ('path-parser'); // to filter out the path
+// const Path = require ('path-parser'); // to filter out the path
 const { URL } = require ('url'); // is default installed inside node library
+const UrlPath = require('url-pattern'); // testing
 const mongoose = require ('mongoose');
 
 const requireLogin = require ('../middlewares/requireLogin');
@@ -16,10 +17,15 @@ module.exports = app => {
         res.send('Thanks for your feedback');
     });
     
-    //////////// 
     app.post('/api/surveys/webhooks',(req, res) => {
-        console.log(req.body);
-        res.send({});
+        // mapping over req.bodu to fetch out every event
+        const events = _.map(req.body, (event)=> {
+            // assignign a pathname to fetch out just the URL provided in event
+            const pathname = new URL(event.url).pathname;
+            // const p = Path.createPath('/api/surveys/:surveyId/:choice');
+            const p = new UrlPattern('/api/surveys/:surveyId/:choice');
+            console.log(p.match(pathname));
+        });
     });
 
     app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {

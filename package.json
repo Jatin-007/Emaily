@@ -13,7 +13,7 @@
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run webhook\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
-    "webhook" : "lt -p 5000 -s kasdjatinkasd"
+    "webhook": "lt -p 5000 -s kasdjatinkasd"
   },
   "author": "",
   "license": "ISC",
@@ -30,6 +30,7 @@
     "passport-google-oauth20": "^1.0.0",
     "path-parser": "^4.0.2",
     "sendgrid": "^5.2.3",
-    "stripe": "^5.4.0"
+    "stripe": "^5.4.0",
+    "url-pattern": "^1.0.3"
   }
 }
