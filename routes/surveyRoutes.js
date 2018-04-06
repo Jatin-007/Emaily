@@ -18,25 +18,26 @@ module.exports = app => {
     });
     
     app.post('/api/surveys/webhooks',(req, res) => {
-        // mapping over req.body to fetch out every event
-        const events = _.map(req.body, ({email, url})=> {
-            // assigning a pathname to fetch out just the URL provided in event
-            const pathname = new URL(url).pathname;
-            
-            //FROM DIFFERENT LIBRARY // path-parser // const p = Path.createPath('/api/surveys/:surveyId/:choice');
-            const p = new UrlPath('/api/surveys/:surveyId/:choice');
-
-            const test = p.match(pathname);
-            if(test){
-                return {email, surveyId: test.surveyId, choice: test.choice};
-            }
-        });
-
-        const compactEvents = _.compact(events); // removing undefined values from the events using lodash's compact method
-        const uniqueEvents = _.uniqBy(compactEvents, 'email', 'surveyId'); // uniqBy another method to find unique values/results
-        // uniqBy // go through the compactEvents and remove all the duplicates with same 'email' as well as 'surveyId'
+        const p = new UrlPath('/api/surveys/:surveyId/:choice');
         
-        console.log(uniqueEvents);
+        // mapping over req.body to fetch out every event
+        
+        const events = _.chain(req.body)
+            .map(({email, url})=> {
+                const test = p.match(new URL(url).pathname);
+                
+                if(test){
+                    return {email, surveyId: test.surveyId, choice: test.choice};
+                }
+            })
+
+            .compact() // removing undefined values from the events using lodash's compact method
+            .uniqBy('email', 'surveyId') // uniqBy another method to find unique values/results
+            // uniqBy // go through the compactEvents and remove all the duplicates with same 'email' as well as 'surveyId'
+            .value();
+
+
+        console.log(events);
         res.send({});
     });
 
