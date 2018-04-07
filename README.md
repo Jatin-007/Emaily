@@ -14,4 +14,4 @@ Thanks for having a look :)
 ## Will be adding a URL Link soon for the production side of this website
 Currently i have been focusing more on working at the development side and understanding the difference and how to handle certain situations
 
-Planning to deploy the production side on Heroku or Firebase
+Planning to deploy the production side on Heroku
