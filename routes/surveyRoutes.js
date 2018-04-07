@@ -22,7 +22,7 @@ module.exports = app => {
         
         // mapping over req.body to fetch out every event
         
-        const events = _.chain(req.body)
+        _.chain(req.body)
             .map(({email, url})=> {
                 const test = p.match(new URL(url).pathname);
                 
@@ -34,10 +34,20 @@ module.exports = app => {
             .compact() // removing undefined values from the events using lodash's compact method
             .uniqBy('email', 'surveyId') // uniqBy another method to find unique values/results
             // uniqBy // go through the compactEvents and remove all the duplicates with same 'email' as well as 'surveyId'
+            .each(({surveyId, email, choice}) => {
+                
+                Survey.updateOne({
+                    _id: surveyId, // _id is how mongoose will understand the id property
+                    recipients: {
+                        $elemMatch: {email: email, responded: false} // finding the correct recipeint with yes or no
+                    },   
+                }, {
+                    $inc: {[choice]: 1}, // increments the result (either yes or no ) by one
+                    $set: {'recipients.$.responded': true}
+                }).exec(); // .exec() executes/ saves the data to the database
+            })
             .value();
 
-
-        console.log(events);
         res.send({});
     });
 
