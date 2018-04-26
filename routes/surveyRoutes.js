@@ -40,7 +40,7 @@ module.exports = app => {
                     _id: surveyId, // _id is how mongoose will understand the id property
                     recipients: {
                         $elemMatch: {email: email, responded: false} // finding the correct recipeint with yes or no
-                    },   
+                    }   
                 }, {
                     $inc: {[choice]: 1}, // increments the result (either yes or no ) by one
                     $set: {'recipients.$.responded': true}
