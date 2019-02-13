@@ -9,6 +9,4 @@ Emaily is an application for small businesses where they can register their acco
  5. MongoDB for database with Mongoose.js
  6. SendGrid for Sending out the emails
 
-Thanks for having a look :) 
-
-## Will be adding a URL Link soon for the production side of this website
+### Old repository not mantained anymore
